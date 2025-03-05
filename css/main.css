@@ -44,6 +44,10 @@ body {
     counter-increment: my-counter;
 }
 
+.magic-list__item:first-child {
+    border-top: 1.5px solid light-dark(var(--dark-border), var(--light-border));
+}
+
 .magic-list__item::before {
     content: '[' counter(my-counter, decimal-leading-zero) ']';
     position: absolute;
@@ -51,6 +55,9 @@ body {
     margin-top: calc(var(--index) / 2);
     font-size: calc(var(--index) * .95);
     letter-spacing: .5px;
+    transition: transform var(--transition);
+    will-change: transform;
+    transition-delay: .025s;
 }
 
 .magic-list__item:hover .magic-list__header,
@@ -64,6 +71,11 @@ body {
 
 .magic-list__item:hover .cursor {
     opacity: 1;
+}
+
+.magic-list__header {
+    transition: transform var(--transition);
+    will-change: transform;
 }
 
 .cursor {
